@@ -12,9 +12,9 @@ Este es el backend de la aplicación de gestión de mascotas, desarrollado con [
 
 ## Requisitos
 
--   [Node.js](https://nodejs.org/) (v16 o superior)
--   [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
--   Una instancia de [PostgreSQL](https://www.postgresql.org/) en ejecución.
+-   [Node.js](https://nodejs.org/) (v22.20.0)
+-   [yarn](https://yarnpkg.com/)
+-   Una instancia de [PostgreSQL](https://www.postgresql.org/)
 
 ## Pasos para Levantar en Desarrollo
 
@@ -30,12 +30,6 @@ cd pet-api
 ### 2. Instalar Dependencias
 
 Instala todas las dependencias del proyecto usando npm o yarn.
-
-```bash
-npm install
-```
-
-o
 
 ```bash
 yarn install
