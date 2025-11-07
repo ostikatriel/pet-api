@@ -52,7 +52,7 @@ JWT_SECRET="tu-secreto-para-jwt"
 Una vez configurado, puedes iniciar la aplicación en modo de desarrollo. El servidor se reiniciará automáticamente con cada cambio que realices en el código fuente.
 
 ```bash
-npm run start:dev
+yarn start:dev
 ```
 
 La aplicación estará disponible en `http://localhost:3000` (o el puerto que tengas configurado).
@@ -68,7 +68,7 @@ El sistema cuenta con un mecanismo de "seeding" para crear un usuario administra
 Para ejecutar el seeder, utiliza el siguiente comando:
 
 ```bash
-npm run seed
+yarn run seed
 ```
 
 Este comando poblará la base de datos con un usuario administrador con las siguientes credenciales (o las que estén definidas en el script del seeder):
