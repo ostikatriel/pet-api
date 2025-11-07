@@ -13,25 +13,26 @@ export class PetsController {
 
     @Post()
     async create(@Body() dto: CreatePetDto, @Request() req) {
-        await this.petsService.create(dto, req.user);
-        return { message: 'Pet created' };
+        const pet = await this.petsService.create(dto, req.user);
+        const { owner, ...petWithoutOwner } = pet;
+        return { message: 'Pet created', data: petWithoutOwner };
     }
 
     @Get()
     async findAll(@Request() req) {
         const pets = await this.petsService.findAll(req.user);
-        return { message: 'Pets found', pets };
+        return { message: 'Pets found', data: pets };
     }
 
     @Put(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdatePetDto, @Request() req) {
-        await this.petsService.update(id, dto, req.user);
-        return { message: 'Pet updated' };
+        const pet = await this.petsService.update(id, dto, req.user);
+        return { message: 'Pet updated', data: pet };
     }
 
     @Delete(':id')
     async remove(@Param('id', ParseIntPipe) id: number, @Request() req) {
-        await this.petsService.remove(id, req.user);
-        return { message: 'Pet deleted' };
+        const pet = await this.petsService.remove(id, req.user);
+        return { message: 'Pet deleted', data: pet };
     }
 }
