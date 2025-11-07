@@ -16,6 +16,7 @@ export class UserEntity {
 
     @Column()
     password: string;
+
     @Column({ name: 'full_name' })
     fullName: string;
 

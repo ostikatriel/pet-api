@@ -21,7 +21,7 @@ export class PetsService {
     }
 
     async update(id: number, dto: UpdatePetDto, user: UserEntity) {
-        const pet = await this.repo.findOne({ where: { id } });
+        const pet = await this.repo.findOne({ where: { id }, relations: ['owner'] });
         if (!pet) throw new NotFoundException('Pet not found');
 
         if (user.role !== Role.ADMIN && pet.owner.id !== user.id)
@@ -32,7 +32,7 @@ export class PetsService {
     }
 
     async remove(id: number, user: UserEntity) {
-        const pet = await this.repo.findOne({ where: { id } });
+        const pet = await this.repo.findOne({ where: { id }, relations: ['owner'] });
         if (!pet) throw new NotFoundException('Pet not found');
 
         if (user.role !== Role.ADMIN && pet.owner.id !== user.id)

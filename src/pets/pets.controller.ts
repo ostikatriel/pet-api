@@ -27,12 +27,14 @@ export class PetsController {
     @Put(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdatePetDto, @Request() req) {
         const pet = await this.petsService.update(id, dto, req.user);
-        return { message: 'Pet updated', data: pet };
+        const { owner, ...petWithoutOwner } = pet;
+        return { message: 'Pet updated', data: petWithoutOwner };
     }
 
     @Delete(':id')
     async remove(@Param('id', ParseIntPipe) id: number, @Request() req) {
         const pet = await this.petsService.remove(id, req.user);
-        return { message: 'Pet deleted', data: pet };
+        const { owner, ...petWithoutOwner } = pet;
+        return { message: 'Pet deleted', data: petWithoutOwner };
     }
 }
