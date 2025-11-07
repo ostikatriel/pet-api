@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, UseGuards, Request, Put, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { PetsService } from './pets.service';
-// import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
-import { JwtAuthGuard } from 'src/common/guards/jwt-auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../common/guards/jwt-auth/jwt-auth.guard';
 
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
