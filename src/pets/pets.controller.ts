@@ -12,22 +12,26 @@ export class PetsController {
     constructor(private petsService: PetsService) { }
 
     @Post()
-    create(@Body() dto: CreatePetDto, @Request() req) {
-        return this.petsService.create(dto, req.user);
+    async create(@Body() dto: CreatePetDto, @Request() req) {
+        const pet = await this.petsService.create(dto, req.user);
+        return { message: 'Pet created', pet };
     }
 
     @Get()
-    findAll(@Request() req) {
-        return this.petsService.findAll(req.user);
+    async findAll(@Request() req) {
+        const pets = await this.petsService.findAll(req.user);
+        return { message: 'Pets found', pets };
     }
 
     @Put(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdatePetDto, @Request() req) {
-        return this.petsService.update(id, dto, req.user);
+    async update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdatePetDto, @Request() req) {
+        const pet = await this.petsService.update(id, dto, req.user);
+        return { message: 'Pet updated', pet };
     }
 
     @Delete(':id')
-    remove(@Param('id', ParseIntPipe) id: number, @Request() req) {
-        return this.petsService.remove(id, req.user);
+    async remove(@Param('id', ParseIntPipe) id: number, @Request() req) {
+        await this.petsService.remove(id, req.user);
+        return { message: 'Pet deleted' };
     }
 }
