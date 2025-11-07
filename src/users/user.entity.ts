@@ -16,8 +16,7 @@ export class UserEntity {
 
     @Column()
     password: string;
-
-    @Column()
+    @Column({ name: 'full_name' })
     fullName: string;
 
     @Column({ type: 'enum', enum: Role, default: Role.CLIENT })
