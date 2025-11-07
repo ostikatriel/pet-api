@@ -12,6 +12,7 @@ export class PetEntity {
     @Column()
     species: string;
 
-    @ManyToOne(() => UserEntity, (user) => user.pets, { eager: true })
+    // @ManyToOne(() => UserEntity, (user) => user.pets, { eager: true })
+    @ManyToOne(() => UserEntity, (user) => user.pets)
     owner: UserEntity;
 }

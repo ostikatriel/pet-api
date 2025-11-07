@@ -13,8 +13,8 @@ export class PetsController {
 
     @Post()
     async create(@Body() dto: CreatePetDto, @Request() req) {
-        const pet = await this.petsService.create(dto, req.user);
-        return { message: 'Pet created', pet };
+        await this.petsService.create(dto, req.user);
+        return { message: 'Pet created' };
     }
 
     @Get()
@@ -25,8 +25,8 @@ export class PetsController {
 
     @Put(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdatePetDto, @Request() req) {
-        const pet = await this.petsService.update(id, dto, req.user);
-        return { message: 'Pet updated', pet };
+        await this.petsService.update(id, dto, req.user);
+        return { message: 'Pet updated' };
     }
 
     @Delete(':id')
