@@ -12,7 +12,7 @@ export class AuthService {
 
     async register(dto: RegisterDto): Promise<Omit<UserEntity, 'password'>> {
         const existingUser = await this.usersService.findByEmail(dto.email);
-        if (existingUser) throw new ConflictException('El correo electrónico ya está en uso.');
+        if (existingUser) throw new ConflictException('Email is already in use');
         const hashed = await bcrypt.hash(dto.password, 10);
         const user = await this.usersService.create({
             email: dto.email,
